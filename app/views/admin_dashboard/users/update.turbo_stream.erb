@@ -1,0 +1,11 @@
+<%= turbo_stream.replace "admin_dashboard__#{dom_id(@user)}" do %>
+  <%= render partial: 'line', locals: {user: @user,  family: @family }   %>
+<% end %>
+<!-- parental updated -->
+<%= turbo_stream.replace "__admin_dashboard#{dom_id(@family)}" do %>
+    <%= render partial: "admin_dashboard/families/line", locals: {family: @family} %>
+  <% end %>
+<!-- flash notices -->
+<%= turbo_stream.update "flash_notices" do %>
+  <%= render partial: "layouts/flash_notices", locals: {resource: @user} %>
+<% end %>

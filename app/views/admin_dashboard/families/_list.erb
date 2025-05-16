@@ -1,0 +1,57 @@
+<%= turbo_frame_tag "admin_dashboard__families-list"   do %>
+
+  <div class="container ">
+    
+      <h4>
+        FAMILIES
+      </h4>
+    
+
+    
+    <%= render partial: "admin_dashboard/families/new_button", locals: {} %><br />
+    
+
+    
+      
+        <div class="row hg-row ">
+          <div class='col-sm-2 hg-heading-row heading--family--name' >Name</div>
+
+          
+            
+              
+              
+                <div class=" scaffold-col-heading col-sm-4 ">
+                  <strong>
+                    Users
+                  </strong>
+                </div>
+              
+            
+          
+
+          
+
+          <div class=' scaffold-col-heading scaffold-col-heading-buttons col-sm-2' >
+          </div>
+        </div>
+      
+      
+      <% if families.empty? %>
+    <div>
+        None
+    </div>
+      <% end %>
+      <% families.each do |family| %>
+        <%= render partial: 'admin_dashboard/families/line', locals: {family: family}
+            .merge(defined?(nested_for) ? {nested_for: nested_for} : {})
+      
+        %>
+      <% end %>
+      
+    <% if families.respond_to?(:total_pages) %><%= paginate(families) %> <% end %>
+  
+
+
+  
+  </div>
+<% end %>

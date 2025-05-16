@@ -13,4 +13,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  namespace :admin_dashboard do # this is an unprotected dashboard!
+    resources :families do
+      resources :users
+    end
+  end
+
+  resources :appointments
 end

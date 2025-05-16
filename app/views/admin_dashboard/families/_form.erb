@@ -1,0 +1,16 @@
+<div class="row">
+  <div class='col-md-2 cell--family--name' >  
+    <span class='<%= "alert alert-danger" if family.errors.details.keys.include?(:name) %>'  >
+        <%= f.text_field :name, value: family.name, autocomplete: 'off', size: 40, class: 'form-control', type: '' %>
+       
+      
+      <label class='text-muted small form-text' for=''>Name</label>
+    </span>
+   
+  </div>
+
+  <div class="col-md-2">
+    <%= link_to "Cancel", admin_dashboard_families_path,  {class: "btn btn-secondary"} %>
+    <%= f.submit "Save", class: "btn btn-primary pull-right" %>
+  </div>
+</div>

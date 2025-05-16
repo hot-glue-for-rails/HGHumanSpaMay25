@@ -1,0 +1,32 @@
+<div class='hg-col col-sm-1 appointment--when_at'> <% unless appointment.when_at.nil? %>
+      <%= appointment.when_at.in_time_zone(current_timezone).strftime('%l:%M %p ') %>
+     <% else %>
+    <span class=''>MISSING</span>
+    <% end %></div>
+<div class='hg-col col-sm-1 appointment--user_id'> <%= appointment.user.try(:name) || '<span class="content ">MISSING</span>'.html_safe %></div>
+<div class='hg-col col-sm-1 appointment--treatment'> 
+    <% if appointment.treatment.nil? %>
+        <span class='alert-danger'>Missing treatment</span>
+    <% else %><%=  Appointment.defined_enums['treatment'][appointment.treatment.to_sym] %><% end %></div>
+
+
+
+
+
+
+
+
+
+<div class=" scaffold-line-buttons col-md-2" >
+  
+
+  
+    <%= form_with url: appointment_path(appointment), html: {data: {'turbo-confirm': "Are you sure you want to delete #{ appointment.name }?" }, style: "display: inline-block;"}, method: :delete do |f| %>
+      <%= f.submit "Delete".html_safe,  class: "delete-appointment-button btn btn-primary btn-sm" %>
+    <% end %>
+  
+
+  
+  <%= link_to "Edit ".html_safe, edit_appointment_path(appointment), disable_with: "Loading...", class: "edit-appointment-button btn btn-primary btn-sm" %>
+  
+</div>

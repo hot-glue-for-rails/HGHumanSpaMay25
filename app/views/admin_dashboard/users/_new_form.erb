@@ -1,0 +1,13 @@
+<%= turbo_frame_tag "admin_dashboard__user-new" do %>
+  <h3>
+    New User
+  </h3>
+  <%= form_with model:  user,
+         url: admin_dashboard_family_users_path(family), method: :post do  |f| %>
+    <%=  render partial: "admin_dashboard/users/form",
+locals: { user: user, f: f}.merge(defined?(family) ? {family: family}: {}) %>
+
+
+<% end %>
+
+<% end %>

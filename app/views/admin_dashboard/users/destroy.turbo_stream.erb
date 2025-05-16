@@ -1,0 +1,11 @@
+<%= turbo_stream.replace "__admin_dashboard#{dom_id(@family)}" do %>
+    <%= render partial: "admin_dashboard/families/line", locals: {family: @family} %>
+  <% end %>
+
+<%= turbo_stream.update "admin_dashboard__users-list" + "__family-#{@family.id}" do %>
+  <%= render partial: "list", locals: {users: @users }.merge(@family ? {nested_for: "family-#{@family.id}", family: @family} : {}) %>
+<% end %>
+
+<%= turbo_stream.update "flash_notices" do %>
+<%= render partial: "layouts/flash_notices", locals: {resource: @user} %>
+<% end %>

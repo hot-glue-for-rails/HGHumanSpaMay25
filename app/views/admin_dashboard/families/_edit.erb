@@ -1,0 +1,14 @@
+<%= turbo_frame_tag "admin_dashboard__#{dom_id(family)}" do  %>
+<div class="cell editable" style="position: relative;">
+  <% if family.errors.any? %>
+  <%= render(partial: "admin_dashboard/errors", locals: {resource: family }) %>
+  <% end %>
+  <h2>Editing <%= family.name %></h2>
+  <%= form_with model: family,
+   url: admin_dashboard_family_path(family) do |f| %>
+    <%=  render partial: "admin_dashboard/families/form", locals: {:family => family, f: f} %>
+  
+  <% end %>
+  
+</div>
+<% end %>

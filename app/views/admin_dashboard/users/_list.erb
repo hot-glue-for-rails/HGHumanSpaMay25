@@ -1,0 +1,43 @@
+<%= turbo_frame_tag "admin_dashboard__users-list" + ((('__' + nested_for) if defined?(nested_for)) || "")  do %>
+
+  <div class="container ">
+    
+
+    
+    <%= render partial: "admin_dashboard/users/new_button", locals: {}.merge(defined?(family) ? {family: family} : {}) %><br />
+    
+
+    
+      
+        <div class="row hg-row ">
+          <div class='col-sm-2 hg-heading-row heading--user--email' >Email</div>
+<div class='col-sm-2 hg-heading-row heading--user--name' >Name</div>
+
+          
+
+          
+
+          <div class=' scaffold-col-heading scaffold-col-heading-buttons col-sm-2' >
+          </div>
+        </div>
+      
+      
+      <% if users.empty? %>
+    <div>
+        None
+    </div>
+      <% end %>
+      <% users.each do |user| %>
+        <%= render partial: 'admin_dashboard/users/line', locals: {user: user}
+            .merge(defined?(nested_for) ? {nested_for: nested_for} : {})
+            .merge(defined?(family) ? {family: family} : {})
+        %>
+      <% end %>
+      
+    <% if users.respond_to?(:total_pages) %><%= paginate(users) %> <% end %>
+  
+
+
+  
+  </div>
+<% end %>

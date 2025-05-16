@@ -1,0 +1,48 @@
+<%= turbo_frame_tag "__appointments-list"   do %>
+
+  <div class="container ">
+    
+      <h4>
+        APPOINTMENTS
+      </h4>
+    
+
+    
+    <%= render partial: "appointments/new_button", locals: {} %><br />
+    
+
+    
+      
+        <div class="row hg-row ">
+          <div class='col-sm-1 hg-heading-row heading--appointment--when_at' >When at</div>
+<div class='col-sm-1 hg-heading-row heading--appointment--user_id' >User</div>
+<div class='col-sm-1 hg-heading-row heading--appointment--treatment' >Treatment</div>
+
+          
+
+          
+
+          <div class=' scaffold-col-heading scaffold-col-heading-buttons col-sm-1' >
+          </div>
+        </div>
+      
+      
+      <% if appointments.empty? %>
+    <div>
+        None
+    </div>
+      <% end %>
+      <% appointments.each do |appointment| %>
+        <%= render partial: 'appointments/line', locals: {appointment: appointment}
+            .merge(defined?(nested_for) ? {nested_for: nested_for} : {})
+      
+        %>
+      <% end %>
+      
+    <% if appointments.respond_to?(:total_pages) %><%= paginate(appointments) %> <% end %>
+  
+
+
+  
+  </div>
+<% end %>

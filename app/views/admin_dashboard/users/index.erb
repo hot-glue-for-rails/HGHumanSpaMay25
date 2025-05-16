@@ -1,0 +1,11 @@
+
+
+<div class="container">
+  
+  
+
+  <div class="row"> <div class="col-md-12">
+  <%= render partial: 'admin_dashboard/users/list',
+    locals: {users: @users}.merge(@family ? {nested_for: "family-#{@family.id}", family: @family} : {}) %>
+  </div> </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="row">
+  <div class='col-md-1 cell--appointment--when_at' >  
+    <span class='<%= "alert alert-danger" if appointment.errors.details.keys.include?(:when_at) %>'  >
+      <%= time_field_localized(f, :when_at, appointment.when_at, label: 'When at') %>
+      <label class='text-muted small form-text' for=''>When at</label>
+    </span>
+   
+  </div>
+  <div class='col-md-1 cell--appointment--user_id' >  
+    <span class='<%= "alert alert-danger" if appointment.errors.details.keys.include?(:user) %>'  >
+      <%= f.text_field :__lookup_user_email, value: @appointment.user&.email, placeholder: "email" %><br />
+      
+      <label class='text-muted small form-text' for=''>User</label>
+    </span>
+   
+  </div>
+  <div class='col-md-1 cell--appointment--treatment' >  
+    <span class='<%= "alert alert-danger" if appointment.errors.details.keys.include?(:treatment) %>'  >
+      <%= f.collection_select(:treatment, enum_to_collection_select(Appointment.defined_enums['treatment']), :key, :value, {include_blank: true, selected: appointment.treatment }, class: 'form-control'  )%>
+      <label class='text-muted small form-text' for=''>Treatment</label>
+    </span>
+   
+  </div>
+
+  <div class="col-md-2">
+    <%= link_to "Cancel", appointments_path,  {class: "btn btn-secondary"} %>
+    <%= f.submit "Save", class: "btn btn-primary pull-right" %>
+  </div>
+</div>

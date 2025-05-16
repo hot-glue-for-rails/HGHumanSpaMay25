@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "__#{ dom_id(appointment) }" do  %>
+  <div class='row hg-row' data-id='<%= appointment.id %>' data-edit='false'>
+    <%= render partial: 'appointments/show', locals: { appointment: appointment } %>
+  </div>
+<% end %>
+
+
+
+

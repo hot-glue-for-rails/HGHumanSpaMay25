@@ -1,0 +1,21 @@
+<% if @user.errors.none? %>
+  <%= turbo_stream.replace "admin_dashboard__users-list" + "__family-#{@family.id}" do %>
+  <%= render partial: "list", locals: {users: @users, family: @family, nested_for: '"family-#{@family.id}"'  } %>
+
+<% end %>
+  <% end %>
+<!-- parental updated -->
+<%= turbo_stream.replace "__admin_dashboard#{dom_id(@family)}" do %>
+    <%= render partial: "admin_dashboard/families/line", locals: {family: @family} %>
+  <% end %>
+<!-- errors -->
+  <%= turbo_stream.replace "admin_dashboard__user-new" do %>
+  <% if @user.errors.none? %>
+  <%= render partial: "new_button", locals: {}.merge(@family ? {family: @family} : {}) %>
+  <% else %>
+  <%= render partial: "new_form", locals: {user: @user}.merge(@family ? {family: @family} : {}) %>
+  <% end %>
+  <% end %>
+  <%= turbo_stream.replace "flash_notices" do %>
+  <%= render partial: "layouts/flash_notices", locals: {resource: @user} %>
+<% end %>

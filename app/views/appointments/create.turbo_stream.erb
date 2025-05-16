@@ -1,0 +1,19 @@
+<% if @appointment.errors.none? %>
+  <%= turbo_stream.replace "__appointments-list" + "" do %>
+  <%= render partial: "list", locals: {appointments: @appointments } %>
+
+<% end %>
+  <% end %>
+<!-- parental updated -->
+
+<!-- errors -->
+  <%= turbo_stream.replace "__appointment-new" do %>
+  <% if @appointment.errors.none? %>
+  <%= render partial: "new_button", locals: {} %>
+  <% else %>
+  <%= render partial: "new_form", locals: {appointment: @appointment} %>
+  <% end %>
+  <% end %>
+  <%= turbo_stream.replace "flash_notices" do %>
+  <%= render partial: "layouts/flash_notices", locals: {resource: @appointment} %>
+<% end %>

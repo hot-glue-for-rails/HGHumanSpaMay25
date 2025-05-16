@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "admin_dashboard__user-new" do %>
+  <div>
+    <%= link_to "New User",  new_admin_dashboard_family_user_path(family), disable_with: "Loading...", class: "new-user-button btn btn-primary pull-right btn-sm " %>
+  </div>
+<% end %>

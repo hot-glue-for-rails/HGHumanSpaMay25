@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "__appointment-new" do %>
+  <div>
+    <%= link_to "New Appointment",  new_appointment_path, disable_with: "Loading...", class: "new-appointment-button btn btn-primary pull-right  " %>
+  </div>
+<% end %>

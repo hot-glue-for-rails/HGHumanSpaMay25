@@ -1,0 +1,13 @@
+<%= turbo_frame_tag "admin_dashboard__family-new" do %>
+  <h3>
+    New Family
+  </h3>
+  <%= form_with model:  family,
+         url: admin_dashboard_families_path, method: :post do  |f| %>
+    <%=  render partial: "admin_dashboard/families/form",
+locals: { family: family, f: f} %>
+
+
+<% end %>
+
+<% end %>

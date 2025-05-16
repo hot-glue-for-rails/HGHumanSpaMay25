@@ -1,0 +1,19 @@
+<% if @family.errors.none? %>
+  <%= turbo_stream.replace "admin_dashboard__families-list" + "" do %>
+  <%= render partial: "list", locals: {families: @families } %>
+
+<% end %>
+  <% end %>
+<!-- parental updated -->
+
+<!-- errors -->
+  <%= turbo_stream.replace "admin_dashboard__family-new" do %>
+  <% if @family.errors.none? %>
+  <%= render partial: "new_button", locals: {} %>
+  <% else %>
+  <%= render partial: "new_form", locals: {family: @family} %>
+  <% end %>
+  <% end %>
+  <%= turbo_stream.replace "flash_notices" do %>
+  <%= render partial: "layouts/flash_notices", locals: {resource: @family} %>
+<% end %>

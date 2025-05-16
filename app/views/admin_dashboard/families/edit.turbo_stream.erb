@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "admin_dashboard__#{dom_id(@family)}" do %>
+  <%= render 'edit', locals: { family: @family } %>
+<% end %>

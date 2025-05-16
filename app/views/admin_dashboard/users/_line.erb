@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "admin_dashboard__#{ dom_id(user) }" do  %>
+  <div class='row hg-row' data-id='<%= user.id %>' data-edit='false'>
+    <%= render partial: 'admin_dashboard/users/show', locals: { user: user, family: family, nested_for: "family-#{family.id}" } %>
+  </div>
+<% end %>
+
+
+
+

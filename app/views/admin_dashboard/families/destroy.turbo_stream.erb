@@ -1,0 +1,9 @@
+
+
+<%= turbo_stream.update "admin_dashboard__families-list" + "" do %>
+  <%= render partial: "list", locals: {families: @families } %>
+<% end %>
+
+<%= turbo_stream.update "flash_notices" do %>
+<%= render partial: "layouts/flash_notices", locals: {resource: @family} %>
+<% end %>
