@@ -73,3 +73,5 @@ gem "active_record_query_trace", "~> 1.8", :groups => [:development, :test]
 gem "byebug", "~> 12.0", :groups => [:development, :test]
 
 gem "rubycritic", "~> 4.9", :group => :dev
+
+gem "hot-glue", "~> 0.6.17"
