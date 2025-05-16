@@ -44,3 +44,4 @@
 .env.*.local
 
 coverage/
+.byebug_history
