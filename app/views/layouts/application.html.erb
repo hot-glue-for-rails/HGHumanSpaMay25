@@ -20,7 +20,11 @@
   <body>
 
   <%= render partial: 'layouts/flash_notices' %>
-  
+  <% if current_user %>
+    <%= button_to "Log Out", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to "Log In", new_user_session_path %>
+  <% end %>
     <%= yield %>
   </body>
 </html>
